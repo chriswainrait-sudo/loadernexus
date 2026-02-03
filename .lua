@@ -162,6 +162,9 @@ Handlers.KEY_VALID = function(data, message)
         getgenv().NEXUS_IS_PREMIUM = isPremium
         getgenv().NEXUS_LOADER_AUTH = true
     end
+    
+    -- Ensure data is synced before loading next script
+    task.wait(0.1)
 
     _G.script_key = _G.script_key or ""
 
