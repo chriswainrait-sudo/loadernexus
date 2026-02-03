@@ -126,20 +126,11 @@ Handlers.KEY_VALID = function(data, message)
         nexusExpiry = expireTime
         isPremium = false
     else
-        -- No valid timestamp or timestamp is in past (weird for valid key)
-        -- Fallback to assuming Lifetime if it's not a timestamped key
-        -- But check message if possible to avoid the bug where 1-day keys show as Premium
-        
-        -- If expireTime is nil, it's potentially Lifetime.
+ 
         if not expireTime then
              isPremium = true
         end
     end
-    
-    -- Heuristic: If message exists and mentions "Days" or "Hours", it's likely not Premium/Lifetime logic (depending on definition)
-    -- Actually, simpler fix: Just trust the data fully, but ensure variables are set globally.
-    -- If the user persists with "First Run" bug, it implies data.auth_expire is nil on first run.
-    -- Force re-check logic isn't easily possible here without async issues.
     
     -- Let's try trusting the 'message' if available, otherwise fallback.
     if message and (string.find(message, "Lifetime") or string.find(message, "Permanent")) then
