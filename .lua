@@ -276,5 +276,21 @@ Tabs.Auth:AddButton({
     end
 })
 
+Tabs.Auth:AddButton({
+    Title = "Reset Saved Key",
+    Description = "Clear saved key data",
+    Callback = function()
+        if isfile and isfile("NexusLoader_Key.txt") then
+            if delfile then
+                delfile("NexusLoader_Key.txt")
+            elseif writefile then
+                writefile("NexusLoader_Key.txt", "")
+            end
+        end
+        KeyInput:SetValue("")
+        Fluent:Notify({Title = "Success", Content = "Saved key reset.", Duration = 3})
+    end
+})
+
 Window:SelectTab(1)
 
