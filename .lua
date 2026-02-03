@@ -256,8 +256,16 @@ task.spawn(function()
         if savedKey and savedKey:gsub("%s+", "") ~= "" then
             savedKey = savedKey:gsub("%s+", "")
             KeyInput:SetValue(savedKey)
-            task.wait(1)
-            ProcessKey(savedKey)
+            
+            Fluent:Notify({Title = "Auto-Login", Content = "Auto-loading in 5 seconds...", Duration = 5})
+            task.wait(5)
+            
+            if isfile("NexusLoader_Key.txt") then
+                local check = readfile("NexusLoader_Key.txt")
+                if check and check:gsub("%s+", "") ~= "" then
+                    ProcessKey(savedKey)
+                end
+            end
             return
         end
     end
