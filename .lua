@@ -29,7 +29,7 @@ _G.SemiAllowedExecutors = {
     ["Solara"] = true,
 }
 
-local ScriptID = "11c520171bb3740c638f34f99f86daa0"
+local ScriptID = "4f0bb793c81ed5c0d20a9cfa3d083a5f"
 
 local UserInputService = game:GetService("UserInputService")
 local IS_MOBILE = (UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled)
